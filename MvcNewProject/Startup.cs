@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,8 +27,8 @@ namespace MvcNewProject
         {
             //DbContext Configration
             services.AddDbContext<AppDbContext>(Options => 
-            Options.UseSqlServer() 
-            );
+            Options.UseSqlServer(Configuration.GetConnectionString("DefualtConnectionString")));
+           
             services.AddControllersWithViews();
         }
 
@@ -57,6 +58,8 @@ namespace MvcNewProject
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            AppDbInitializer.Seed(app);
         }
     }
 }

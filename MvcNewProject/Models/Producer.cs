@@ -15,7 +15,7 @@ namespace MvcNewProject.Models
         public string FullName { get; set; }
         public string Bio { get; set; }
 
-        // Relationship : One Producer Has Many Movies (One-to-Many)
-        public List<Movie> Movies { get; set; } //Create foreign key column ProducerId In table Movie
+        // Relationship with Movie
+        public List<Movie> Movies { get; set; } // Relationship (One-to-Many): One Producer Has Many Movies 
     }
 }

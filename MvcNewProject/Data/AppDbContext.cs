@@ -9,7 +9,7 @@ namespace MvcNewProject.Data
 {
     public class AppDbContext:DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options):base(options) 
         {
           
 
@@ -22,15 +22,12 @@ namespace MvcNewProject.Data
                 am.ActorId,
                 am.MovieId
             });
-           
-            // a for table Actor
-            // m for table Movie
-            // am for table Actor_Movie
 
-            modelBuilder.Entity<Actor_Movie>().HasOne(a => a.Actor).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.ActorId);
             modelBuilder.Entity<Actor_Movie>().HasOne(m => m.Movie).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.MovieId);
+            modelBuilder.Entity<Actor_Movie>().HasOne(a => a.Actor).WithMany(am => am.Actors_Movies).HasForeignKey(a => a.ActorId);
+
            
-           base.OnModelCreating(modelBuilder);
+           base.OnModelCreating(modelBuilder); 
         }
 
         // The table will be created in data base will take the name of Actors,Procedurs,Movies,Cinemas,Actors_Movies

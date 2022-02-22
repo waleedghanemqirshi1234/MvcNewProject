@@ -14,25 +14,25 @@ namespace MvcNewProject.Models
         public int Id { get; set; }
        
         public string Name { get; set; }
+        public string Description { get; set; }
         public double Price { get; set; }
         public string ImageURL { get; set; }
-        public string Description { get; set; }
         public DateTime StartDate{ get; set; }
         public DateTime EndDate { get; set; }
         public MovieCategory MovieCategory { get; set; }
 
 
-        //Relationship : One Movie Has Many Actor_Movies (One-to-Many)
-        public List<Actor_Movie> Actors_Movies { get; set; } //Create foreign key column MovieId In table Actor_Movie
+        //Relationship With Actor_Movies
+        public List<Actor_Movie> Actors_Movies { get; set; }  //Relationship (One-to-Many): One Movie Has Many Actor_Movies 
 
-        //Relationship : Many Movies Has one Cinema (Money-to-one)
-        public int CinemaId { get; set; }
+        //Relationship With Cinema
+        public int CinemaId { get; set; }  // Create Column CinemaId in table Movies as foreign key
         [ForeignKey("CinemaId")]
-        public Cinema Cinema { get; set; }
+        public Cinema Cinema { get; set; } //Relationship (Money-to-one): Many Movies Has one Cinema 
 
-        //Relationship : Many Movies Has one Producer (Money-to-one) 
-        public int ProducerId { get; set; }
+        //Relationship With Producer
+        public int ProducerId { get; set; }    // Create Column ProducerId in table Movies as foreign key 
         [ForeignKey("ProducerId")]
-        public Producer Prodeucer { get; set; }
+        public Producer Prodeucer { get; set; } //Relationship (Money-to-one): Many Movies Has one Producer 
     }
 }

@@ -10,8 +10,8 @@ namespace MvcNewProject.Controllers
 {
     public class ActorsController : Controller
     {
+        //Dependancy Injection for AppDbContext ==> For DbSet Actors
         private readonly AppDbContext _Context;
-
         public ActorsController(AppDbContext Context)
         {
             _Context = Context;

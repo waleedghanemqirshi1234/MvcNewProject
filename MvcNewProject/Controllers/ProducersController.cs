@@ -10,6 +10,7 @@ namespace MvcNewProject.Controllers
 {
     public class ProducersController : Controller
     {
+        //Dependancy Injection for AppDbContext ==> For DbSet Producer
         private readonly AppDbContext _Context;
         public ProducersController(AppDbContext Context)
         {
@@ -17,8 +18,8 @@ namespace MvcNewProject.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var Data =await _Context.Producers.ToListAsync();
-            return View();
+            var Data = await _Context.Producers.ToListAsync();
+            return View(Data);
         }
     }
 }

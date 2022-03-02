@@ -11,6 +11,7 @@ namespace MvcNewProject.Controllers
 {
     public class MoviesController : Controller
     {
+        //Dependancy Injection for AppDbContext ==> For DbSet Movies
         private readonly AppDbContext _Context;
         public MoviesController(AppDbContext Context)
         {
@@ -20,7 +21,7 @@ namespace MvcNewProject.Controllers
         public async Task<IActionResult> Index()
         {
             var Data = await _Context.Movies.ToListAsync();
-            return View();
+            return View(Data);
         }
     }
 }
